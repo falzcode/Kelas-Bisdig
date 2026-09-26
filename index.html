@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bisnis Digital B — 2024</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e14; --panel:#121822; --panel2:#182130; --line:rgba(255,255,255,.08);
+  --text:#e8edf4; --muted:#8b96a8; --a1:#6c5ce7; --a2:#22d3ee;
+  --grad:linear-gradient(135deg,var(--a1),var(--a2));
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0); padding-bottom:env(safe-area-inset-bottom,0);
+}
+*{box-sizing:inherit;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0)}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;line-height:1.55}
+h1,h2,h3,.disp{font-family:'Space Grotesk',sans-serif}
+img{max-width:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.bgfx{position:fixed;inset:0;z-index:-1;background:
+  radial-gradient(600px 400px at 15% 10%, rgba(108,92,231,.16), transparent 60%),
+  radial-gradient(700px 500px at 85% 30%, rgba(34,211,238,.12), transparent 60%),
+  var(--bg)}
+
+/* NAV */
+nav{position:sticky;top:env(safe-area-inset-top,0);z-index:20;display:flex;justify-content:space-between;align-items:center;
+  padding:18px 24px;backdrop-filter:blur(10px);background:rgba(10,14,20,.55);border-bottom:1px solid var(--line);flex-wrap:wrap;gap:8px}
+.brand{font-weight:600;letter-spacing:.02em;font-size:15px}
+.brand span{color:var(--a2)}
+nav a{color:var(--muted);text-decoration:none;font-size:14px;margin-left:22px}
+nav a:hover{color:var(--text)}
+
+/* HERO */
+.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:80px 20px 60px;perspective:1200px}
+.eyebrow{color:var(--muted);font-size:14px;margin-bottom:18px}
+.hero h1{font-size:clamp(2.4rem,7vw,5rem);font-weight:700;line-height:1.05;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:480px;margin:20px auto 0;font-size:16px}
+
+.card3d{margin-top:52px;width:min(360px,90vw);padding:28px 22px;border-radius:20px;background:var(--panel2);
+  border:1px solid var(--line);box-shadow:0 30px 60px -20px rgba(0,0,0,.6);
+  transform-style:preserve-3d;transition:transform .12s ease-out;will-change:transform}
+.card3d .top{display:flex;justify-content:space-between;align-items:flex-start}
+.card3d .tag{font-size:12px;color:var(--a2);background:rgba(34,211,238,.1);padding:5px 10px;border-radius:20px}
+.card3d h3{margin-top:22px;font-size:1.5rem;text-align:center}
+.card3d .stats{display:flex;justify-content:space-between;margin-top:24px}
+.card3d .stat{flex:1;text-align:center}
+.card3d .stat b{display:block;font-size:1.3rem;font-family:'Space Grotesk'}
+.card3d .stat span{font-size:11px;color:var(--muted)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* SECTION HEADS */
+section{padding:80px 0}
+.shead{margin-bottom:52px}
+.shead .kicker{color:var(--a2);font-size:13px;margin-bottom:10px}
+.shead h2{font-size:clamp(1.6rem,4vw,2.4rem)}
+.shead p{color:var(--muted);margin-top:10px;max-width:520px}
+
+/* ORG STRUCTURE */
+.org-top{display:flex;justify-content:center;margin-bottom:26px}
+.leadrow{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:640px;margin:0 auto 8px}
+.person{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px;text-align:center;
+  transform-style:preserve-3d;transition:transform .35s ease,border-color .35s}
+.person:hover{border-color:rgba(108,92,231,.5);transform:translateY(-6px) rotateX(4deg)}
+.avatar{width:64px;height:64px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;
+  font-family:'Space Grotesk';font-weight:600;font-size:20px;color:#0a0e14;background:var(--grad);position:relative;overflow:hidden}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.person.lead .avatar{width:82px;height:82px;font-size:24px}
+.person h4{font-size:15px;font-weight:600}
+.person small{color:var(--muted);font-size:12px;display:block;margin-top:4px}
+.role{display:inline-block;margin-top:10px;font-size:11px;color:var(--a2);border:1px solid rgba(34,211,238,.3);
+  padding:3px 10px;border-radius:20px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:16px;margin-top:36px}
+.grid .person{padding:18px 10px}
+.grid .avatar{width:52px;height:52px;font-size:16px}
+.grid h4{font-size:13px}
+
+/* GALLERY */
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gph{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--panel);
+  display:flex;align-items:center;justify-content:center}
+.gph::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(108,92,231,.10),rgba(34,211,238,.06));pointer-events:none}
+.gph img{width:100%;height:auto;display:block}
+.gph span{display:none;color:var(--muted);font-size:13px}
+
+footer{padding:60px 24px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+
+@media(max-width:640px){
+  .leadrow{grid-template-columns:1fr}
+  .gal{grid-template-columns:1fr}
+  section{padding:60px 0}
+  nav a{margin-left:14px}
+}
+</style>
+</head>
+<body>
+<div class="bgfx"></div>
+
+<nav>
+  <div class="brand">BISDIG <span>B·24</span></div>
+  <div>
+    <a href="#struktur">Struktur</a>
+    <a href="#galeri">Galeri</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="eyebrow">Program Studi Bisnis Digital</div>
+  <h1>Kelas <em>Bisnis Digital B</em><br>Angkatan 2024</h1>
+  <p>Di balik layar ada cerita, di balik nama ada perjalanan - inilah kami, Bisnis Digital 2024.</p>
+
+  <div class="card3d" id="tiltCard">
+    <div class="top">
+      <span class="tag">Kelas Aktif</span>
+      <span class="tag">2024</span>
+    </div>
+    <h3>Bisnis Digital B</h3>
+    <div class="stats">
+      <div class="stat"><b>19</b><span>Mahasiswa</span></div>
+      <div class="stat"><b>1</b><span>Dosen Wali</span></div>
+      <div class="stat"><b>2024</b><span>Angkatan</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="struktur">
+  <div class="wrap">
+    <div class="shead reveal">
+      <div class="kicker">Struktur Kelas</div>
+      <h2>The People Behind Our Journey</h2>
+      <p>Mereka yang memberi arah, menjaga koordinasi, dan menjadi bagian dari perjalanan Kelas Bisdig B.</p>
+    </div>
+
+    <div class="org-top reveal">
+      <div class="person lead" style="max-width:280px">
+        <div class="avatar" style="width:82px;height:82px;font-size:24px"><span>BH</span><img src="https://i.ibb.co.com/5ggMRJqT/IMG-20251018-WA0007.jpg" alt="Bei Harira Irawan" onerror="this.style.display='none'"></div>
+        <h4>Bei Harira Irawan, S.Kom., M.Kom.</h4>
+        <small>Dosen Wali</small>
+        <span class="role">Pembimbing Akademik</span>
+      </div>
+    </div>
+
+    <div class="leadrow reveal">
+      <div class="person lead" id="pKomting">
+        <div class="avatar"><span>ND</span><img src="https://i.ibb.co.com/fYR0VKSL/Proyek-Baru-128-D5-CEC37.png" alt="Naufal Dzaky Firmanda" onerror="this.style.display='none'"></div>
+        <h4>Naufal Dzaky Firmanda</h4>
+        <span class="role">Komting</span>
+      </div>
+      <div class="person lead" id="pBendahara">
+        <div class="avatar"><span>AS</span><img src="https://i.ibb.co.com/Dffq7rQV/IMG-20251017-WA0075.jpg" alt="Arman Suryantara" onerror="this.style.display='none'"></div>
+        <h4>Arman Suryantara</h4>
+        <span class="role">Bendahara</span>
+      </div>
+    </div>
+
+    <div class="grid reveal" id="anggotaGrid"></div>
+  </div>
+</section>
+
+<section id="galeri">
+  <div class="wrap">
+    <div class="shead reveal">
+      <div class="kicker">Galeri</div>
+      <h2>Sepenggal momen kelas</h2>
+      <p>Ketiga momen Kelas B Bisnis Digital.</p>
+    </div>
+    <div class="gal reveal">
+      <div class="gph g1"><img src="https://i.ibb.co.com/bj3kFGrG/momen.jpg" alt="Galeri kelas 1" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span>Foto 1</span></div>
+      <div class="gph g2"><img src="https://i.ibb.co.com/SwPPwtt1/hhh.jpg" alt="Galeri kelas 2" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span>Foto 2</span></div>
+      <div class="gph g3"><img src="https://i.ibb.co.com/Q7F4YPkH/kls.jpg" alt="Galeri kelas 3" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span>Foto 3</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>Bisnis Digital B · Angkatan 2024 — dibuat oleh Naufal Dzaky.</footer>
+
+<script>
+// Isi "foto" tiap orang dengan link foto (contoh: dari ibb.co seperti galeri di atas).
+// Kosongkan "" kalau belum ada — otomatis fallback ke avatar inisial.
+const anggota = [
+  { nama:"Panca Setiya Laksono", foto:"https://iili.io/KvlLHVR.md.jpg" },
+  { nama:"Anugrah Banu Alfatan", foto:"https://i.ibb.co.com/wFw3YhTr/IMG-20251018-WA0073.jpg" },
+  { nama:"Feri Teguh Arifanto", foto:"https://i.ibb.co.com/4nQbRLWF/IMG-20251017-WA0077.jpg" },
+  { nama:"Singgih Prawiro", foto:"https://i.ibb.co.com/39DX5MSd/IMG-20251017-WA0072.jpg" },
+  { nama:"Moh. Rafi Ramadhan", foto:"https://i.ibb.co.com/m519Bfm0/IMG-20251018-WA0042.jpg" },
+  { nama:"Roby Adhitya Sebayu", foto:"https://i.ibb.co.com/q3xDsSYr/IMG-20251018-WA0081.jpg" },
+  { nama:"Yovanya Cleo", foto:"https://i.ibb.co.com/GvqT0ShY/IMG-20251018-WA0069.jpg" },
+  { nama:"Marsella Lusio", foto:"https://iili.io/KvcttMx.md.jpg" },
+  { nama:"Siti Nur Afifah", foto:"https://i.ibb.co.com/5pwmJSw/IMG-20251018-WA0056.jpg" },
+  { nama:"Putri Melati", foto:"https://iili.io/Kvcboqx.md.jpg" },
+  { nama:"Anisa Isti Komah", foto:"https://i.ibb.co.com/FLVdQFM8/IMG-20251018-WA0015.jpg" },
+  { nama:"Nailah Widyadhana", foto:"https://i.ibb.co.com/6RG0WQ8j/IMG-20251018-WA0030.jpg" },
+  { nama:"Viona Maria Aprilianti", foto:"https://iili.io/KvlHnS4.md.jpg" },
+  { nama:"Yusi Dwi Astuti", foto:"https://iili.io/Kvldfaf.md.jpg" },
+  { nama:"Nurul Rigendari", foto:"https://i.ibb.co.com/TqMVPVTj/IMG-20251018-WA0002.jpg" },
+  { nama:"Maida Elma", foto:"https://i.ibb.co.com/1JmYHdRV/IMG-20251018-WA0022.jpg" },
+  { nama:"Fitri Kumalasari", foto:"https://i.ibb.co.com/1fSTtyc0/IMG-20251018-WA0024.jpg" }
+];
+const initials = n => n.replace(/Moh\.|,/g,'').trim().split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join('').toUpperCase();
+const grid = document.getElementById('anggotaGrid');
+grid.innerHTML = anggota.map(({nama,foto}) => `
+  <div class="person">
+    <div class="avatar"><span>${initials(nama)}</span><img src="${foto}" alt="${nama}" onerror="this.style.display='none'"></div>
+    <h4>${nama}</h4>
+  </div>`).join('');
+
+// scroll reveal, dua arah
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    e.target.classList.toggle('in', e.isIntersecting);
+  });
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// tilt 3D hero card (nonaktif di layar sentuh biar nggak ganggu)
+const card = document.getElementById('tiltCard');
+if (window.matchMedia('(hover: hover)').matches) {
+  card.addEventListener('mousemove',(e)=>{
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left)/r.width - .5;
+    const y = (e.clientY - r.top)/r.height - .5;
+    card.style.transform = `rotateY(${x*14}deg) rotateX(${-y*14}deg) translateZ(10px)`;
+  });
+  card.addEventListener('mouseleave',()=>{ card.style.transform = 'rotateY(0) rotateX(0)'; });
+}
+</script>
+</body>
+</html>
